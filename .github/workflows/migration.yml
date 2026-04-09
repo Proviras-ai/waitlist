@@ -1,4 +1,4 @@
-ame: Migrations
+name: Migrations
 
 on:
   push:
