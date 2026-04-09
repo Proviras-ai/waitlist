@@ -29,6 +29,7 @@ export type UserMinAggregateOutputType = {
   createdAt: Date | null
   fullName: string | null
   email: string | null
+  agentOrHuman: $Enums.AgentOrHuman | null
   buildingStatus: $Enums.BuildingStatus | null
   approved: boolean | null
 }
@@ -38,6 +39,7 @@ export type UserMaxAggregateOutputType = {
   createdAt: Date | null
   fullName: string | null
   email: string | null
+  agentOrHuman: $Enums.AgentOrHuman | null
   buildingStatus: $Enums.BuildingStatus | null
   approved: boolean | null
 }
@@ -47,6 +49,7 @@ export type UserCountAggregateOutputType = {
   createdAt: number
   fullName: number
   email: number
+  agentOrHuman: number
   buildingStatus: number
   models: number
   approved: number
@@ -59,6 +62,7 @@ export type UserMinAggregateInputType = {
   createdAt?: true
   fullName?: true
   email?: true
+  agentOrHuman?: true
   buildingStatus?: true
   approved?: true
 }
@@ -68,6 +72,7 @@ export type UserMaxAggregateInputType = {
   createdAt?: true
   fullName?: true
   email?: true
+  agentOrHuman?: true
   buildingStatus?: true
   approved?: true
 }
@@ -77,6 +82,7 @@ export type UserCountAggregateInputType = {
   createdAt?: true
   fullName?: true
   email?: true
+  agentOrHuman?: true
   buildingStatus?: true
   models?: true
   approved?: true
@@ -160,6 +166,7 @@ export type UserGroupByOutputType = {
   createdAt: Date
   fullName: string
   email: string
+  agentOrHuman: $Enums.AgentOrHuman
   buildingStatus: $Enums.BuildingStatus | null
   models: $Enums.Framework[]
   approved: boolean
@@ -191,6 +198,7 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   fullName?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanFilter<"User"> | $Enums.AgentOrHuman
   buildingStatus?: Prisma.EnumBuildingStatusNullableFilter<"User"> | $Enums.BuildingStatus | null
   models?: Prisma.EnumFrameworkNullableListFilter<"User">
   approved?: Prisma.BoolFilter<"User"> | boolean
@@ -201,6 +209,7 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  agentOrHuman?: Prisma.SortOrder
   buildingStatus?: Prisma.SortOrderInput | Prisma.SortOrder
   models?: Prisma.SortOrder
   approved?: Prisma.SortOrder
@@ -214,6 +223,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   fullName?: Prisma.StringFilter<"User"> | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanFilter<"User"> | $Enums.AgentOrHuman
   buildingStatus?: Prisma.EnumBuildingStatusNullableFilter<"User"> | $Enums.BuildingStatus | null
   models?: Prisma.EnumFrameworkNullableListFilter<"User">
   approved?: Prisma.BoolFilter<"User"> | boolean
@@ -224,6 +234,7 @@ export type UserOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  agentOrHuman?: Prisma.SortOrder
   buildingStatus?: Prisma.SortOrderInput | Prisma.SortOrder
   models?: Prisma.SortOrder
   approved?: Prisma.SortOrder
@@ -240,6 +251,7 @@ export type UserScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   fullName?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanWithAggregatesFilter<"User"> | $Enums.AgentOrHuman
   buildingStatus?: Prisma.EnumBuildingStatusNullableWithAggregatesFilter<"User"> | $Enums.BuildingStatus | null
   models?: Prisma.EnumFrameworkNullableListFilter<"User">
   approved?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
@@ -250,6 +262,7 @@ export type UserCreateInput = {
   createdAt?: Date | string
   fullName: string
   email: string
+  agentOrHuman?: $Enums.AgentOrHuman
   buildingStatus?: $Enums.BuildingStatus | null
   models?: Prisma.UserCreatemodelsInput | $Enums.Framework[]
   approved?: boolean
@@ -260,6 +273,7 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   fullName: string
   email: string
+  agentOrHuman?: $Enums.AgentOrHuman
   buildingStatus?: $Enums.BuildingStatus | null
   models?: Prisma.UserCreatemodelsInput | $Enums.Framework[]
   approved?: boolean
@@ -270,6 +284,7 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanFieldUpdateOperationsInput | $Enums.AgentOrHuman
   buildingStatus?: Prisma.NullableEnumBuildingStatusFieldUpdateOperationsInput | $Enums.BuildingStatus | null
   models?: Prisma.UserUpdatemodelsInput | $Enums.Framework[]
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -280,6 +295,7 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanFieldUpdateOperationsInput | $Enums.AgentOrHuman
   buildingStatus?: Prisma.NullableEnumBuildingStatusFieldUpdateOperationsInput | $Enums.BuildingStatus | null
   models?: Prisma.UserUpdatemodelsInput | $Enums.Framework[]
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -290,6 +306,7 @@ export type UserCreateManyInput = {
   createdAt?: Date | string
   fullName: string
   email: string
+  agentOrHuman?: $Enums.AgentOrHuman
   buildingStatus?: $Enums.BuildingStatus | null
   models?: Prisma.UserCreatemodelsInput | $Enums.Framework[]
   approved?: boolean
@@ -300,6 +317,7 @@ export type UserUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanFieldUpdateOperationsInput | $Enums.AgentOrHuman
   buildingStatus?: Prisma.NullableEnumBuildingStatusFieldUpdateOperationsInput | $Enums.BuildingStatus | null
   models?: Prisma.UserUpdatemodelsInput | $Enums.Framework[]
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -310,6 +328,7 @@ export type UserUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fullName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  agentOrHuman?: Prisma.EnumAgentOrHumanFieldUpdateOperationsInput | $Enums.AgentOrHuman
   buildingStatus?: Prisma.NullableEnumBuildingStatusFieldUpdateOperationsInput | $Enums.BuildingStatus | null
   models?: Prisma.UserUpdatemodelsInput | $Enums.Framework[]
   approved?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -328,6 +347,7 @@ export type UserCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  agentOrHuman?: Prisma.SortOrder
   buildingStatus?: Prisma.SortOrder
   models?: Prisma.SortOrder
   approved?: Prisma.SortOrder
@@ -338,6 +358,7 @@ export type UserMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  agentOrHuman?: Prisma.SortOrder
   buildingStatus?: Prisma.SortOrder
   approved?: Prisma.SortOrder
 }
@@ -347,6 +368,7 @@ export type UserMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   fullName?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  agentOrHuman?: Prisma.SortOrder
   buildingStatus?: Prisma.SortOrder
   approved?: Prisma.SortOrder
 }
@@ -361,6 +383,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type EnumAgentOrHumanFieldUpdateOperationsInput = {
+  set?: $Enums.AgentOrHuman
 }
 
 export type NullableEnumBuildingStatusFieldUpdateOperationsInput = {
@@ -383,6 +409,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   fullName?: boolean
   email?: boolean
+  agentOrHuman?: boolean
   buildingStatus?: boolean
   models?: boolean
   approved?: boolean
@@ -393,6 +420,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   createdAt?: boolean
   fullName?: boolean
   email?: boolean
+  agentOrHuman?: boolean
   buildingStatus?: boolean
   models?: boolean
   approved?: boolean
@@ -403,6 +431,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   createdAt?: boolean
   fullName?: boolean
   email?: boolean
+  agentOrHuman?: boolean
   buildingStatus?: boolean
   models?: boolean
   approved?: boolean
@@ -413,12 +442,13 @@ export type UserSelectScalar = {
   createdAt?: boolean
   fullName?: boolean
   email?: boolean
+  agentOrHuman?: boolean
   buildingStatus?: boolean
   models?: boolean
   approved?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "fullName" | "email" | "buildingStatus" | "models" | "approved", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "fullName" | "email" | "agentOrHuman" | "buildingStatus" | "models" | "approved", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
@@ -428,6 +458,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     createdAt: Date
     fullName: string
     email: string
+    agentOrHuman: $Enums.AgentOrHuman
     buildingStatus: $Enums.BuildingStatus | null
     models: $Enums.Framework[]
     approved: boolean
@@ -858,6 +889,7 @@ export interface UserFieldRefs {
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly fullName: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly agentOrHuman: Prisma.FieldRef<"User", 'AgentOrHuman'>
   readonly buildingStatus: Prisma.FieldRef<"User", 'BuildingStatus'>
   readonly models: Prisma.FieldRef<"User", 'Framework[]'>
   readonly approved: Prisma.FieldRef<"User", 'Boolean'>

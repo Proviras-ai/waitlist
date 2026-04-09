@@ -1,4 +1,4 @@
-import { PrismaClient, BuildingStatus, Framework } from "../generated/prisma/client";
+import { PrismaClient, BuildingStatus, Framework, AgentOrHuman } from "../generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
@@ -8,6 +8,7 @@ const prisma = new PrismaClient({ adapter });
 export type WaitlistInput = {
   name: string;
   email: string;
+  agentOrHuman: AgentOrHuman;
   building: BuildingStatus;
   frameworks: Framework[];
 };
@@ -23,6 +24,7 @@ export async function createWaitlistEntry(input: WaitlistInput) {
     data: {
       fullName: input.name,
       email: input.email,
+      agentOrHuman: input.agentOrHuman,
       buildingStatus: input.building,
       models: input.frameworks ?? [],
     },

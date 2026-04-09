@@ -5,6 +5,7 @@ import NameEmailFields from "./TextInputs";
 import ModelTypes from "./ModelTypes";
 import BuildingStatus from "./BuildingStatus";
 import { NAVY, WHITE, DIM, BORDER } from "../lib/constants";
+import AgentOrHuman from "./AgentOrHuman";
 
 const LogoMark = ({ size = 26, color = NAVY }) => (
   <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
@@ -42,6 +43,7 @@ export default function App() {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [building, setBuilding] = useState<string>("");
+  const [agentOrHuman, setAgentOrHuman] = useState<"Agent" | "Human">("Human");
   const [frameworks, setFrameworks] = useState<string[]>([]);
   const [errors, setErrors] = useState({});
   const [done, setDone] = useState(false);
@@ -59,8 +61,6 @@ export default function App() {
     if (!name.trim()) e.name = "Required";
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = "Enter a valid email";
     setErrors(e);
-    console.log('e', e)
-    console.log('passed', !e.name && !e.email)
     return !e.name && !e.email;
   };
 
@@ -72,6 +72,7 @@ export default function App() {
     body: JSON.stringify({
       name,
       email,
+      agentOrHuman,
       building,
       frameworks
     }),
@@ -91,7 +92,7 @@ export default function App() {
   const px = isMobile ? "20px" : "40px";
 
   return (
-    <div style={{     fontFamily: "var(--font-geist-sans, 'GeistSans', ui-sans-serif, system-ui, sans-serif)", background: WHITE, minHeight: "100vh", color: NAVY }}>
+    <div style={{ fontFamily: "var(--font-geist-sans, 'GeistSans', ui-sans-serif, system-ui, sans-serif)", background: WHITE, minHeight: "100vh", color: NAVY, display: "flex", flexDirection: "column" }}>
       {/* Nav */}
       <nav style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
@@ -110,10 +111,7 @@ export default function App() {
       </nav>
 
       {/* Content */}
-      <div style={{ maxWidth: 520, margin: "0 auto", padding: `${isMobile ? "48px" : "80px"} ${px} 80px` }}>
-        <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: DIM, marginBottom: 16 }}>
-          Identity · Reputation · Trust
-        </p>
+      <div style={{ maxWidth: 550, margin: "0 auto", padding: `${isMobile ? "48px" : "80px"} ${px} 80px`, flex: 1 }}>
         <h1 style={{
           fontSize: `clamp(1.8rem, 6vw, 2.8rem)`, fontWeight: 800,
           lineHeight: 1.1, letterSpacing: "-1.5px", color: NAVY, margin: "0 0 14px"
@@ -139,12 +137,13 @@ export default function App() {
 
           <div style={{ borderTop: `1px solid ${BORDER}` }} />
 
+          <AgentOrHuman value={agentOrHuman} onChange={setAgentOrHuman}/>
+
           <BuildingStatus value={building} onChange={setBuilding}/>
 
           <ModelTypes value={frameworks} onChange={setFrameworks} />
 
           <button onClick={() => {
-            console.log('done')
             onSubmit()
           }} style={{
             marginTop: 4, padding: "14px", fontSize: 15, fontWeight: 700,
