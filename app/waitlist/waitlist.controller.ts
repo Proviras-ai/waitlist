@@ -58,13 +58,6 @@ export async function postWaitlistEntry(req: NextRequest) {
 
 
     const buildingStatus = buildingStatusMap[building];
-    if (!buildingStatus) {
-      console.log('invalid building')
-      return NextResponse.json(
-        { error: "Invalid building status." },
-        { status: 400 }
-      );
-    }
 
     const agentOrHumanVal = agentOrHumanMap[agentOrHuman as "Agent" | "Human"];
 
