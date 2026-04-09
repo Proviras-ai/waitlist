@@ -12,6 +12,8 @@ export async function postWaitlistEntry(req: NextRequest) {
         { status: 400 }
       );
     }
+    
+    console.log({ name, email, agentOrHuman, building, frameworks });
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
