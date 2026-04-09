@@ -12,7 +12,7 @@ export default function AgentOrHuman({ value, onChange }: Props) {
   const toggle = (opt: "Agent" | "Human") => onChange(opt);
 
   return (
-    <Field label="What kind of user are you?">
+    <Field label="Who are you?">
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {options.map((opt) => {
           const sel = value === opt;
