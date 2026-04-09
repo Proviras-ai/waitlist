@@ -194,7 +194,7 @@ export default function App() {
           <LogoMark size={18} />
           <span style={{ fontWeight: 800, fontSize: 13, letterSpacing: "0.04em", textTransform: "uppercase", color: NAVY }}>Proviras</span>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 16 }}>
           {socials.map(s => (
             <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
               style={{ color: DIM, display: "flex", alignItems: "center", transition: "color 0.15s" }}
