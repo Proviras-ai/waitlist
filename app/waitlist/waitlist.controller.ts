@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createWaitlistEntry, checkDuplicate } from "./waitlist.service";
-import { BuildingStatus, Framework } from "../generated/prisma/enums";
+import { AgentOrHuman, BuildingStatus, Framework } from "../generated/prisma/enums";
 export async function postWaitlistEntry(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, building, frameworks } = body;
+    const { name, email, agentOrHuman, building, frameworks } = body;
 
-    if (!name || !email || !building) {
+    if (!name || !email || !agentOrHuman) {
       return NextResponse.json(
         { error: "Missing required fields." },
         { status: 400 }
@@ -29,6 +29,11 @@ export async function postWaitlistEntry(req: NextRequest) {
         { status: 409 }
       );
     }
+
+    const agentOrHumanMap: Record<"Human" | "Agent", AgentOrHuman> = {
+      "Agent": AgentOrHuman.AGENT,
+      "Human": AgentOrHuman.HUMAN,
+    };
 
     const buildingStatusMap: Record<string, BuildingStatus> = {
       "Yes, actively in production": BuildingStatus.IN_PRODUCTION,
@@ -56,7 +61,9 @@ export async function postWaitlistEntry(req: NextRequest) {
       );
     }
 
-    const entry = await createWaitlistEntry({ name, email, building: buildingStatus, frameworks: mappedFrameworks });
+    const agentOrHumanVal = agentOrHumanMap[agentOrHuman as "Agent" | "Human"];
+
+    const entry = await createWaitlistEntry({ name, email, agentOrHuman: agentOrHumanVal, building: buildingStatus, frameworks: mappedFrameworks });
     return NextResponse.json({ success: true, id: entry.id }, { status: 201 });
 
   } catch (error) {

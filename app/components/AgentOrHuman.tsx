@@ -1,28 +1,33 @@
 import Field from "./Field";
 import { BORDER_ACTIVE, BORDER, NAVY, DIM } from "../lib/constants";
-const options=["Actively in production", "In development / experimenting", "Evaluating for future use", "Just exploring for now"]
+
+const options: ("Human" | "Agent")[] = ["Human", "Agent"];
 
 type Props = {
-  value: string;
-  onChange: (val: string) => void;
+  value: "Agent" | "Human";
+  onChange: (val: "Agent" | "Human") => void;
 };
 
-export default function BuildingStatus({ value, onChange }: Props) {
-  const toggle = (opt: string) =>
-    onChange(opt);
+export default function AgentOrHuman({ value, onChange }: Props) {
+  const toggle = (opt: "Agent" | "Human") => onChange(opt);
 
   return (
-    <Field label="How do you use agents? (optional)">
+    <Field label="What kind of user are you?">
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-        {options.map(opt => {
-          const sel = value.includes(opt);
+        {options.map((opt) => {
+          const sel = value === opt;
+
           return (
             <div
               key={opt}
               onClick={() => toggle(opt)}
               style={{
-                padding: "8px 14px", borderRadius: 6, cursor: "pointer",
-                fontSize: 13, fontWeight: 500, transition: "all 0.15s",
+                padding: "8px 14px",
+                borderRadius: 6,
+                cursor: "pointer",
+                fontSize: 13,
+                fontWeight: 500,
+                transition: "all 0.15s",
                 background: sel ? "rgba(0,11,61,0.08)" : "rgba(0,11,61,0.03)",
                 border: `1px solid ${sel ? BORDER_ACTIVE : BORDER}`,
                 color: sel ? NAVY : DIM,

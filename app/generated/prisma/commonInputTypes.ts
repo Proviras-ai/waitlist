@@ -40,6 +40,13 @@ export type DateTimeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
 }
 
+export type EnumAgentOrHumanFilter<$PrismaModel = never> = {
+  equals?: $Enums.AgentOrHuman | Prisma.EnumAgentOrHumanFieldRefInput<$PrismaModel>
+  in?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAgentOrHumanFilter<$PrismaModel> | $Enums.AgentOrHuman
+}
+
 export type EnumBuildingStatusNullableFilter<$PrismaModel = never> = {
   equals?: $Enums.BuildingStatus | Prisma.EnumBuildingStatusFieldRefInput<$PrismaModel> | null
   in?: $Enums.BuildingStatus[] | Prisma.ListEnumBuildingStatusFieldRefInput<$PrismaModel> | null
@@ -89,6 +96,16 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
+export type EnumAgentOrHumanWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AgentOrHuman | Prisma.EnumAgentOrHumanFieldRefInput<$PrismaModel>
+  in?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAgentOrHumanWithAggregatesFilter<$PrismaModel> | $Enums.AgentOrHuman
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAgentOrHumanFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAgentOrHumanFilter<$PrismaModel>
+}
+
 export type EnumBuildingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.BuildingStatus | Prisma.EnumBuildingStatusFieldRefInput<$PrismaModel> | null
   in?: $Enums.BuildingStatus[] | Prisma.ListEnumBuildingStatusFieldRefInput<$PrismaModel> | null
@@ -130,6 +147,13 @@ export type NestedDateTimeFilter<$PrismaModel = never> = {
   gt?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
   gte?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
+}
+
+export type NestedEnumAgentOrHumanFilter<$PrismaModel = never> = {
+  equals?: $Enums.AgentOrHuman | Prisma.EnumAgentOrHumanFieldRefInput<$PrismaModel>
+  in?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAgentOrHumanFilter<$PrismaModel> | $Enums.AgentOrHuman
 }
 
 export type NestedEnumBuildingStatusNullableFilter<$PrismaModel = never> = {
@@ -184,6 +208,16 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
+}
+
+export type NestedEnumAgentOrHumanWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AgentOrHuman | Prisma.EnumAgentOrHumanFieldRefInput<$PrismaModel>
+  in?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AgentOrHuman[] | Prisma.ListEnumAgentOrHumanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAgentOrHumanWithAggregatesFilter<$PrismaModel> | $Enums.AgentOrHuman
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAgentOrHumanFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAgentOrHumanFilter<$PrismaModel>
 }
 
 export type NestedEnumBuildingStatusNullableWithAggregatesFilter<$PrismaModel = never> = {

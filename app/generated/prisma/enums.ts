@@ -30,3 +30,11 @@ export const Framework = {
 } as const
 
 export type Framework = (typeof Framework)[keyof typeof Framework]
+
+
+export const AgentOrHuman = {
+  AGENT: 'AGENT',
+  HUMAN: 'HUMAN'
+} as const
+
+export type AgentOrHuman = (typeof AgentOrHuman)[keyof typeof AgentOrHuman]
