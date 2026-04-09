@@ -83,6 +83,7 @@ export default function App() {
   if (res.ok) {
     setDone(true);
   } else {
+    console.log('error', data.error)
     setErrors(prev => ({ ...prev, submit: data.error }));
   }
   }};
