@@ -7,16 +7,18 @@ export async function postWaitlistEntry(req: NextRequest) {
     const { name, email, agentOrHuman, building, frameworks } = body;
 
     if (!name || !email || !agentOrHuman) {
+      console.log('missing required fields')
       return NextResponse.json(
         { error: "Missing required fields." },
         { status: 400 }
       );
     }
-    
+
     console.log({ name, email, agentOrHuman, building, frameworks });
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      console.log('email already in use')
       return NextResponse.json(
         { error: "Invalid email address." },
         { status: 400 }
@@ -57,6 +59,7 @@ export async function postWaitlistEntry(req: NextRequest) {
 
     const buildingStatus = buildingStatusMap[building];
     if (!buildingStatus) {
+      console.log('invalid building')
       return NextResponse.json(
         { error: "Invalid building status." },
         { status: 400 }
