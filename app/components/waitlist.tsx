@@ -143,7 +143,7 @@ export default function App() {
       </nav>
 
       {/* Content */}
-      <div style={{ maxWidth: 550, margin: "0 auto", padding: `${isMobile ? "48px" : "80px"} ${px} 80px`, flex: 1 }}>
+      <div style={{ maxWidth: 550, margin: "0 auto", padding: `${isMobile ? "48px" : "30px"} ${px} 40px`, flex: 1 }}>
         <h1 style={{
           fontSize: `clamp(1.8rem, 6vw, 2.8rem)`, fontWeight: 800,
           lineHeight: 1.1, letterSpacing: "-1.5px", color: NAVY, margin: "0 0 14px"
