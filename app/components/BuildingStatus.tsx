@@ -1,5 +1,6 @@
-import Field from "./Field";
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { BORDER_ACTIVE, BORDER, NAVY, DIM } from "../lib/constants";
+import Label from "./Label";
 const options=["Actively in production", "In development / experimenting", "Evaluating for future use", "Just exploring for now"]
 
 type Props = {
@@ -12,7 +13,8 @@ export default function BuildingStatus({ value, onChange }: Props) {
     onChange(opt);
 
   return (
-    <Field label="How do you use agents? (optional)">
+    <div>
+      <Label>building_status <span style={{ fontWeight: 400, opacity: 0.5 }}>// optional</span></Label>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {options.map(opt => {
           const sel = value.includes(opt);
@@ -33,6 +35,6 @@ export default function BuildingStatus({ value, onChange }: Props) {
           );
         })}
       </div>
-    </Field>
+    </div>
   );
 }

@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 
-import Field from "./Field";
 import { BORDER, BORDER_ACTIVE, NAVY, DIM } from "../lib/constants";
+import Label from "./Label";
 
 const FRAMEWORKS = ["LangChain", "CrewAI", "AutoGen", "LlamaIndex", "Agno", "Haystack", "Custom / Other"];
 
@@ -15,7 +16,8 @@ export default function ModelTypes({ value, onChange }: Props) {
     onChange(value.includes(opt) ? value.filter(v => v !== opt) : [...value, opt]);
 
   return (
-    <Field label="Which frameworks do you use? (optional)">
+    <div>
+      <Label>frameworks <span style={{ fontWeight: 400, opacity: 0.5 }}>// optional</span></Label>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {FRAMEWORKS.map(opt => {
           const sel = value.includes(opt);
@@ -36,6 +38,6 @@ export default function ModelTypes({ value, onChange }: Props) {
           );
         })}
       </div>
-    </Field>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
-import Field from "./Field";
 import { BORDER_ACTIVE, BORDER, NAVY, DIM } from "../lib/constants";
+import Label from "./Label";
 
 const options: ("Human" | "Agent")[] = ["Human", "Agent"];
 
@@ -12,7 +12,8 @@ export default function AgentOrHuman({ value, onChange }: Props) {
   const toggle = (opt: "Agent" | "Human") => onChange(opt);
 
   return (
-    <Field label="Who are you?">
+    <div>
+      <Label>you_are</Label>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {options.map((opt) => {
           const sel = value === opt;
@@ -38,6 +39,6 @@ export default function AgentOrHuman({ value, onChange }: Props) {
           );
         })}
       </div>
-    </Field>
+      </div>
   );
 }
