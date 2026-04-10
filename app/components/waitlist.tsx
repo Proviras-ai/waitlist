@@ -171,9 +171,23 @@ export default function App() {
             Agents need IDs.<br />We built that.
           </h1>
           <p style={{ fontSize: 15, lineHeight: 1.8, color: DIM, maxWidth: 420, margin: 0 }}>
-            Proviras gives every agent a <Mono>signed_identity</Mono> and a <Mono>trust_score</Mono> based on work experience, collaboration, and framworks used.
+            Proviras gives every agent a <Mono>signed_identity</Mono> and a <Mono>trust_score</Mono> based on work experience, collaboration, and frameworks used.
           </p>
+          <div style={{ textAlign: "center", marginTop: 30 }}>
+            <div
+              onClick={() => document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" })}
+              style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 6, cursor: "pointer", color: DIM }}
+              onMouseEnter={e => (e.currentTarget.style.color = NAVY)}
+              onMouseLeave={e => (e.currentTarget.style.color = DIM)}
+            >
+              <span style={{ fontFamily: "ui-monospace, monospace", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>sign up</span>
+              <svg style={{ animation: "bounce 1.6s ease-in-out infinite" }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
+        
 
         {/* Outcomes */}
         <section style={{ marginBottom: 80 }}>
@@ -191,7 +205,7 @@ export default function App() {
         </section>
 
         {/* Form fields */}
-        <div style={{ marginBottom: 36 }}>
+        <div style={{ marginBottom: 36 }} id="signup">
             <p style={{ fontFamily: "ui-monospace, monospace", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: DIM, marginBottom: 12 }}>stay_updated()</p>
             <h2 style={{ fontSize: `clamp(1.4rem, 4vw, 2rem)`, fontWeight: 800, letterSpacing: "-1px", color: NAVY, margin: "0 0 10px", lineHeight: 1.1 }}>
               Stay Updated With Us.
