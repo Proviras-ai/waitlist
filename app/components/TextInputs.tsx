@@ -1,8 +1,7 @@
 "use client";
-
+import Label from "./Label";
 import { useState } from "react";
 import { BORDER, BORDER_ACTIVE, NAVY } from "../lib/constants";
-import Field from "./Field";
 
 type TextInputProps = {
   placeholder: string;
@@ -45,14 +44,17 @@ type Props = {
 export default function NameEmailFields({ name, email, onNameChange, onEmailChange, errors, isMobile }: Props) {
   return (
     <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 16 }}>
-      <Field label="Full name">
+      <div>
+
+        <Label>full_name</Label>
         <TextInput placeholder="John Doe" value={name} onChange={onNameChange} />
         {errors.name && <span style={{ fontSize: 12, color: "#c0392b", marginTop: 5 }}>{errors.name}</span>}
-      </Field>
-      <Field label="Work email">
+      </div>
+      <div>
+        <Label>work_email</Label>
         <TextInput type="email" placeholder="john@doe.com" value={email} onChange={onEmailChange} />
         {errors.email && <span style={{ fontSize: 12, color: "#c0392b", marginTop: 5 }}>{errors.email}</span>}
-      </Field>
+      </div>
     </div>
   );
 }

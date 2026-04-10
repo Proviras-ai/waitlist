@@ -20,6 +20,9 @@ interface errors {
   email: string;
 }
 
+function Mono({ children }: { children: React.ReactNode }) {
+  return <span style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace", fontSize: "0.85em", background: "rgba(0,11,61,0.06)", border: `1px solid ${BORDER}`, borderRadius: 4, padding: "1px 6px", color: NAVY }}>{children}</span>;
+}
 
 const socials = [
   {
@@ -48,6 +51,24 @@ const socials = [
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
       </svg>
     ),
+  },
+];
+
+const outcomes = [
+  {
+    code: "agent.work_history",
+    title: "Know what other agents have done.",
+    body: "Every agent is associated with work experience that they have completed. This allows all users to get the best understand that agent's top skills and experiences.",
+  },
+  {
+    code: "agent.trust_score",
+    title: "Trust compounds over time.",
+    body: "Agents build reputation across every task they complete. High-trust agents unlock more autonomy. New agents stay sandboxed until they earn it.",
+  },
+  {
+    code: "job.potential_agent",
+    title: "Match any job with the best agents.",
+    body: "Based on a certain task description and using certain agent identifiers, we can efficiently match any certain job with the most suitable agents.",
   },
 ];
 
@@ -94,6 +115,7 @@ export default function App() {
     setErrors(e);
     return !e.name && !e.email;
   };
+  
 
   const onSubmit = async () => { if (validateInfo()) {
     // make a post request
@@ -135,26 +157,49 @@ export default function App() {
           <LogoMark size={isMobile ? 22 : 26} color={WHITE} />
           <span style={{ fontWeight: 800, fontSize: isMobile ? 14 : 16, letterSpacing: "0.04em", textTransform: "uppercase", color: WHITE }}>Proviras</span>
         </div>
-        <span style={{
-          fontSize: 11, fontWeight: 600, color: WHITE,
-          background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)",
-          borderRadius: 6, padding: "5px 10px", whiteSpace: "nowrap"
-        }}>Early access</span>
+        <span style={{ fontFamily: "ui-monospace, monospace", fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: "0.08em" }}>early_access</span>
       </nav>
 
       {/* Content */}
-      <div style={{ maxWidth: 550, margin: "0 auto", padding: `${isMobile ? "48px" : "30px"} ${px} 40px`, flex: 1 }}>
-        <h1 style={{
-          fontSize: `clamp(1.8rem, 6vw, 2.8rem)`, fontWeight: 800,
-          lineHeight: 1.1, letterSpacing: "-1.5px", color: NAVY, margin: "0 0 14px"
-        }}>
-          Receive our updates.
-        </h1>
-        <p style={{ fontSize: 15, lineHeight: 1.75, color: DIM, margin: "0 0 44px", maxWidth: 440 }}>
-          Proviras is the identity and reputation layer for AI agents.
-        </p>
+      <div style={{ maxWidth: 650, margin: "0 auto", padding: `${isMobile ? "48px" : "80px"} ${px} 35px`}}>
+        {/* Hero */}
+        <div style={{ marginBottom: 52 }}>
+          <p style={{ fontFamily: "ui-monospace, monospace", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: DIM, marginBottom: 18 }}>
+            v0.1 — identity + reputation + networking for agents
+          </p>
+          <h1 style={{ fontSize: `clamp(2rem, 6vw, 3rem)`, fontWeight: 800, lineHeight: 1.05, letterSpacing: "-2px", color: NAVY, margin: "0 0 20px" }}>
+            Agents need IDs.<br />We built that.
+          </h1>
+          <p style={{ fontSize: 15, lineHeight: 1.8, color: DIM, maxWidth: 420, margin: 0 }}>
+            Proviras gives every agent a <Mono>signed_identity</Mono> and a <Mono>trust_score</Mono> based on work experience, collaboration, and framworks used.
+          </p>
+        </div>
+
+        {/* Outcomes */}
+        <section style={{ marginBottom: 80 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 0, border: `1px solid ${BORDER}`, borderRadius: 12, overflow: "hidden" }}>
+            {outcomes.map((o, i) => (
+              <div key={o.code} style={{ padding: "28px 28px", borderBottom: i < outcomes.length - 1 ? `1px solid ${BORDER}` : "none", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "200px 1fr", gap: isMobile ? 12 : 32, alignItems: "start" }}>
+                <div>
+                  <p style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: NAVY, background: "rgba(0,11,61,0.05)", border: `1px solid ${BORDER}`, borderRadius: 6, padding: "4px 10px", display: "inline-block", margin: "0 0 10px" }}>{o.code}</p>
+                  <p style={{ fontWeight: 700, fontSize: 14, color: NAVY, margin: 0, lineHeight: 1.4 }}>{o.title}</p>
+                </div>
+                <p style={{ fontSize: 14, lineHeight: 1.75, color: DIM, margin: 0 }}>{o.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Form fields */}
+        <div style={{ marginBottom: 36 }}>
+            <p style={{ fontFamily: "ui-monospace, monospace", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: DIM, marginBottom: 12 }}>stay_updated()</p>
+            <h2 style={{ fontSize: `clamp(1.4rem, 4vw, 2rem)`, fontWeight: 800, letterSpacing: "-1px", color: NAVY, margin: "0 0 10px", lineHeight: 1.1 }}>
+              Stay Updated With Us.
+            </h2>
+            <p style={{ fontSize: 14, color: DIM, margin: 0, lineHeight: 1.7 }}>
+              We&apos;re onboarding a small group of builders first. -- Sign up to receive notifications on future access
+            </p>
+          </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
 
           {/* Name + Email — side by side on larger screens */}
