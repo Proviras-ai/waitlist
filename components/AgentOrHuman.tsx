@@ -1,4 +1,4 @@
-import { BORDER_ACTIVE, BORDER, NAVY, DIM } from "../lib/constants";
+import { BORDER_ACTIVE, BORDER, NAVY, DIM } from "@/app/lib/constants";
 import Label from "./Label";
 
 const options: ("Human" | "Agent")[] = ["Human", "Agent"];
