@@ -1,7 +1,7 @@
 "use client";
 import Label from "./Label";
 import { useState } from "react";
-import { BORDER, BORDER_ACTIVE, NAVY } from "../lib/constants";
+import { BORDER, BORDER_ACTIVE, NAVY } from "@/app/lib/constants";
 
 type TextInputProps = {
   placeholder: string;

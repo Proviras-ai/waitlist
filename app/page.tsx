@@ -1,6 +1,6 @@
-import Waitlist from "./components/waitlist";
+import Waitlist from "@/components/waitlist";
 
-export default function Home() {
+export default function Info() {
   return (
     <Waitlist />
   );

@@ -1,22 +1,25 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { BORDER_ACTIVE, BORDER, NAVY, DIM } from "../lib/constants";
+"use client";
+
+import { BORDER, BORDER_ACTIVE, NAVY, DIM } from "@/app/lib/constants";
 import Label from "./Label";
-const options=["Actively in production", "In development / experimenting", "Evaluating for future use", "Just exploring for now"]
+
+const FRAMEWORKS = ["LangChain", "CrewAI", "AutoGen", "LlamaIndex", "Agno", "Haystack", "Custom / Other"];
 
 type Props = {
-  value: string;
-  onChange: (val: string) => void;
+  value: string[];
+  onChange: (val: string[]) => void;
 };
 
-export default function BuildingStatus({ value, onChange }: Props) {
+export default function ModelTypes({ value, onChange }: Props) {
   const toggle = (opt: string) =>
-    onChange(opt);
+    onChange(value.includes(opt) ? value.filter(v => v !== opt) : [...value, opt]);
 
   return (
     <div>
-      <Label>building_status <span style={{ fontWeight: 400, opacity: 0.5 }}>// optional</span></Label>
+      <Label>frameworks <span style={{ fontWeight: 400, opacity: 0.5 }}>// optional</span></Label>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-        {options.map(opt => {
+        {FRAMEWORKS.map(opt => {
           const sel = value.includes(opt);
           return (
             <div
