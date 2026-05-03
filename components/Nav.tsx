@@ -4,13 +4,6 @@ import { useState, useEffect } from "react";
 import { NAVY, WHITE, BORDER } from "@/app/lib/constants";
 import Link from "next/link";
 
-const LogoMark = ({ size = 26, color = NAVY }) => (
-  <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
-    <rect x="3" y="4" width="4" height="14" rx="2" fill={color} />
-    <rect x="11" y="8" width="4" height="10" rx="2" fill={color} />
-    <rect x="3" y="21" width="4" height="4" rx="2" fill={color} />
-  </svg>
-);
 
 export default function Nav() {
   const [isMobile, setIsMobile] = useState(false);
@@ -33,8 +26,9 @@ export default function Nav() {
         position: "sticky", top: 0, background: NAVY, zIndex: 100
       }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
-        <LogoMark size={isMobile ? 22 : 26} color={WHITE} />
-        <span style={{ fontWeight: 800, fontSize: isMobile ? 14 : 16, letterSpacing: "0.04em", textTransform: "uppercase", color: WHITE }}>Proviras</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/favicon.ico" width={20} height={20} alt="" style={{ display: "block" }} />
+          <span style={{ fontWeight: 800, fontSize: isMobile ? 14 : 16, letterSpacing: "0.04em", textTransform: "uppercase", color: WHITE }}>Proviras</span>
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
         <Link href="/" style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em", textDecoration: "none", transition: "color 0.15s" }}
