@@ -9,32 +9,7 @@
 * 🟢 You can import this file directly.
 */
 
-export const BuildingStatus = {
-  IN_PRODUCTION: 'IN_PRODUCTION',
-  IN_DEVELOPMENT: 'IN_DEVELOPMENT',
-  EVALUATING: 'EVALUATING',
-  EXPLORING: 'EXPLORING'
-} as const
-
-export type BuildingStatus = (typeof BuildingStatus)[keyof typeof BuildingStatus]
 
 
-export const Framework = {
-  LANGCHAIN: 'LANGCHAIN',
-  CREWAI: 'CREWAI',
-  AUTOGEN: 'AUTOGEN',
-  LLAMAINDEX: 'LLAMAINDEX',
-  AGNO: 'AGNO',
-  HAYSTACK: 'HAYSTACK',
-  CUSTOM_OTHER: 'CUSTOM_OTHER'
-} as const
-
-export type Framework = (typeof Framework)[keyof typeof Framework]
-
-
-export const AgentOrHuman = {
-  AGENT: 'AGENT',
-  HUMAN: 'HUMAN'
-} as const
-
-export type AgentOrHuman = (typeof AgentOrHuman)[keyof typeof AgentOrHuman]
+// This file is empty because there are no enums in the schema.
+export {}

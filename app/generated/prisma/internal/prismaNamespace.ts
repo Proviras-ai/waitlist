@@ -518,14 +518,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 
 export const UserScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  fullName: 'fullName',
-  email: 'email',
-  agentOrHuman: 'agentOrHuman',
-  buildingStatus: 'buildingStatus',
-  models: 'models',
-  approved: 'approved'
+  email: 'email'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -547,14 +540,6 @@ export const QueryMode = {
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 
 /**
  * Field references
@@ -572,69 +557,6 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime'
- */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime[]'
- */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-/**
- * Reference to a field of type 'AgentOrHuman'
- */
-export type EnumAgentOrHumanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgentOrHuman'>
-    
-
-
-/**
- * Reference to a field of type 'AgentOrHuman[]'
- */
-export type ListEnumAgentOrHumanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgentOrHuman[]'>
-    
-
-
-/**
- * Reference to a field of type 'BuildingStatus'
- */
-export type EnumBuildingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BuildingStatus'>
-    
-
-
-/**
- * Reference to a field of type 'BuildingStatus[]'
- */
-export type ListEnumBuildingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BuildingStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'Framework[]'
- */
-export type ListEnumFrameworkFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Framework[]'>
-    
-
-
-/**
- * Reference to a field of type 'Framework'
- */
-export type EnumFrameworkFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Framework'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
