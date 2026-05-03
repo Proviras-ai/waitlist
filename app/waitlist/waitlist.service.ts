@@ -6,11 +6,7 @@ const prisma = new PrismaClient({ adapter });
 
 
 export type WaitlistInput = {
-  name: string;
   email: string;
-  agentOrHuman: AgentOrHuman;
-  building: BuildingStatus;
-  frameworks: Framework[];
 };
 
 export async function checkDuplicate(email: string) {
@@ -22,11 +18,7 @@ export async function checkDuplicate(email: string) {
 export async function createWaitlistEntry(input: WaitlistInput) {
   return prisma.user.create({
     data: {
-      fullName: input.name,
       email: input.email,
-      agentOrHuman: input.agentOrHuman,
-      buildingStatus: input.building,
-      models: input.frameworks ?? [],
     },
   });
 }

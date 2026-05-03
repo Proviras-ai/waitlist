@@ -3,14 +3,6 @@
 import { useState, useEffect } from "react";
 import { NAVY, DIM, BORDER } from "@/app/lib/constants";
 
-const LogoMark = ({ size = 26, color = NAVY }) => (
-  <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
-    <rect x="3" y="4" width="4" height="14" rx="2" fill={color} />
-    <rect x="11" y="8" width="4" height="10" rx="2" fill={color} />
-    <rect x="3" y="21" width="4" height="4" rx="2" fill={color} />
-  </svg>
-);
-
 const socials = [
   {
     label: "X",
@@ -56,7 +48,8 @@ export default function Footer() {
   return (
       <div style={{ borderTop: `1px solid ${BORDER}`, padding: `20px ${px}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <LogoMark size={18} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/flavicon_transparent.jpg" width={16} height={16} alt="" style={{ display: "block" }} />
           <span style={{ fontWeight: 800, fontSize: 13, letterSpacing: "0.04em", textTransform: "uppercase", color: NAVY }}>Proviras</span>
         </div>
         <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 16 }}>
