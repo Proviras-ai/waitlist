@@ -1,24 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createWaitlistEntry, checkDuplicate } from "./waitlist.service";
-import { AgentOrHuman, BuildingStatus, Framework } from "../generated/prisma/enums";
+
 export async function postWaitlistEntry(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, agentOrHuman, building, frameworks } = body;
+    const { email } = body;
 
-    if (!name || !email || !agentOrHuman) {
-      console.log('missing required fields')
+    if (!email) {
       return NextResponse.json(
-        { error: "Missing required fields." },
+        { error: "Email is required." },
         { status: 400 }
       );
     }
 
-    console.log({ name, email, agentOrHuman, building, frameworks });
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      console.log('email already in use')
       return NextResponse.json(
         { error: "Invalid email address." },
         { status: 400 }
@@ -27,41 +23,13 @@ export async function postWaitlistEntry(req: NextRequest) {
 
     const existing = await checkDuplicate(email);
     if (existing) {
-      const field = existing.email === email ? "email" : "name";
       return NextResponse.json(
-        { error: `That ${field} is already on the waitlist.` },
+        { error: "That email is already on the waitlist." },
         { status: 409 }
       );
     }
 
-    const agentOrHumanMap: Record<"Human" | "Agent", AgentOrHuman> = {
-      "Agent": AgentOrHuman.AGENT,
-      "Human": AgentOrHuman.HUMAN,
-    };
-
-    const buildingStatusMap: Record<string, BuildingStatus> = {
-      "Yes, actively in production": BuildingStatus.IN_PRODUCTION,
-      "Yes, in development / experimenting": BuildingStatus.IN_DEVELOPMENT,
-      "Evaluating for future use": BuildingStatus.EVALUATING,
-      "Just exploring for now": BuildingStatus.EXPLORING,
-    };
-    const frameworkMap: Record<string, Framework> = {
-      "LangChain": Framework.LANGCHAIN,
-      "CrewAI": Framework.CREWAI,
-      "AutoGen": Framework.AUTOGEN,
-      "LlamaIndex": Framework.LLAMAINDEX,
-      "Agno": Framework.AGNO,
-      "Haystack": Framework.HAYSTACK,
-      "Custom / Other": Framework.CUSTOM_OTHER,
-    };
-    const mappedFrameworks = frameworks.map((f: string) => frameworkMap[f]).filter(Boolean);
-
-
-    const buildingStatus = buildingStatusMap[building];
-
-    const agentOrHumanVal = agentOrHumanMap[agentOrHuman as "Agent" | "Human"];
-
-    const entry = await createWaitlistEntry({ name, email, agentOrHuman: agentOrHumanVal, building: buildingStatus, frameworks: mappedFrameworks });
+    const entry = await createWaitlistEntry({ email });
     return NextResponse.json({ success: true, id: entry.id }, { status: 201 });
 
   } catch (error) {
